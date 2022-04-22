@@ -30,7 +30,7 @@ THEGEEKLAB_DRONE_GITHUB_COMMENT = "thegeeklab/drone-github-comment:1"
 TOOLHIPPIE_CALENS = "toolhippie/calens:latest"
 WEBHIPPIE_REDIS = "webhippie/redis:latest"
 
-DEFAULT_PHP_VERSION = "7.4"
+DEFAULT_PHP_VERSION = "7.4-ubuntu20.04"
 DEFAULT_NODEJS_VERSION = "14"
 
 dir = {
@@ -64,18 +64,10 @@ config = {
             "databases": [
                 "sqlite",
                 "mariadb:10.2",
-                "mariadb:10.3",
-                "mariadb:10.4",
-                "mariadb:10.5",
-                "mariadb:10.6",
-                "mysql:5.5",
-                "mysql:5.7",
-                "mysql:8.0",
-                "postgres:9.4",
-                "postgres:10.20",
             ],
         },
         "slowDatabases": {
+            "skip": True,
             "phpVersions": [
                 DEFAULT_PHP_VERSION,
             ],
@@ -88,6 +80,7 @@ config = {
             ],
         },
         "external-samba-windows": {
+            "skip": True,
             "phpVersions": [
                 DEFAULT_PHP_VERSION,
             ],
@@ -107,6 +100,7 @@ config = {
             ],
         },
         "external-other": {
+            "skip": True,
             "phpVersions": [
                 DEFAULT_PHP_VERSION,
             ],
@@ -124,6 +118,7 @@ config = {
     },
     "acceptance": {
         "api": {
+            "skip": True,
             "suites": [
                 "apiAuth",
                 "apiAuthOcs",
@@ -184,6 +179,7 @@ config = {
             "filterTags": "~@local_storage&&~@files_external-app-required",
         },
         "apiFilesExternal": {
+            "skip": True,
             "suites": {
                 "apiFilesExternal": "apiFilesExt",
             },
@@ -195,6 +191,7 @@ config = {
             },
         },
         "apiNotifications": {
+            "skip": True,
             "suites": [
                 "apiSharingNotificationsToRoot",
                 "apiSharingNotificationsToShares",
@@ -204,6 +201,7 @@ config = {
             },
         },
         "apiFederation": {
+            "skip": True,
             "suites": [
                 "apiFederationToRoot1",
                 "apiFederationToRoot2",
@@ -214,6 +212,7 @@ config = {
             "federatedServerVersions": ["git", "latest", "10.8.0"],
         },
         "cli": {
+            "skip": True,
             "suites": [
                 "cliCreateLocalStorage",
                 "cliBackground",
@@ -226,6 +225,7 @@ config = {
             "emailNeeded": True,
         },
         "cliFilesExternal": {
+            "skip": True,
             "suites": {
                 "cliFilesExternal": "cliFilesExt",
             },
@@ -237,12 +237,14 @@ config = {
             },
         },
         "cliManageApps": {
+            "skip": True,
             "suites": [
                 "cliManageApps",
             ],
             "testingRemoteSystem": False,
         },
         "cliEncryption": {
+            "skip": True,
             "suites": [
                 "cliEncryption",
             ],
@@ -269,6 +271,7 @@ config = {
             ],
         },
         "cliDbConversion": {
+            "skip": True,
             "suites": [
                 "cliDbConversion",
             ],
@@ -282,6 +285,7 @@ config = {
             ],
         },
         "cliExternalStorage": {
+            "skip": True,
             "suites": [
                 "cliExternalStorage",
             ],
@@ -292,6 +296,7 @@ config = {
             },
         },
         "webUI": {
+            "skip": True,
             "suites": {
                 "webUIAddUsers": "",
                 "webUIAdminSettings": "",
@@ -329,6 +334,7 @@ config = {
             "selUserNeeded": True,
         },
         "webUIFilesExternal": {
+            "skip": True,
             "suites": {
                 "webUIFilesExternal": "webUIFilesExt",
             },
@@ -340,6 +346,7 @@ config = {
             },
         },
         "webUINotifications": {
+            "skip": True,
             "suites": {
                 "webUISharingNotifications": "webUISharingNotify",
             },
@@ -350,6 +357,7 @@ config = {
             },
         },
         "webUIFileActionsMenu": {
+            "skip": True,
             "suites": {
                 "webUIFileActionsMenu": "",
             },
@@ -360,6 +368,7 @@ config = {
             },
         },
         "webUIFederation": {
+            "skip": True,
             "suites": {
                 "webUISharingExternal1": "webUISharingExt1",
                 "webUISharingExternal2": "webUISharingExt2",
@@ -368,6 +377,7 @@ config = {
             "federatedServerVersions": ["git", "latest", "10.8.0"],
         },
         "webUIFirefox": {
+            "skip": True,
             "suites": {
                 "webUIFirefoxSmoketest": "webUIFfSmoke",
             },
@@ -381,6 +391,7 @@ config = {
             "numberOfParts": 3,
         },
         "webUIProxy": {
+            "skip": True,
             "suites": {
                 "webUIProxySmoketest": "webUIProxySmoke",
             },
@@ -395,6 +406,7 @@ config = {
             "numberOfParts": 3,
         },
         "webUIMobileSize": {
+            "skip": True,
             "suites": {
                 "webUIMobileSize": "",
             },
@@ -412,6 +424,7 @@ config = {
             },
         },
         "apiProxy": {
+            "skip": True,
             "suites": {
                 "apiProxySmoketest": "apiProxySmoke",
             },
@@ -422,6 +435,7 @@ config = {
             "numberOfParts": 8,
         },
         "apiOnSqlite": {
+            "skip": True,
             "suites": {
                 "apiOnSqlite": "apiOnSqlite",
             },
