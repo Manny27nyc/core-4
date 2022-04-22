@@ -57,7 +57,7 @@ config = {
     "phpunit": {
         "mostDatabases": {
             "phpVersions": [
-                "7.3",
+                DEFAULT_PHP_VERSION,
             ],
             # Gather coverage for all databases except Oracle
             "coverage": True,
@@ -77,7 +77,7 @@ config = {
         },
         "slowDatabases": {
             "phpVersions": [
-                "7.3",
+                DEFAULT_PHP_VERSION,
             ],
             # Oracle takes a long time to start and run
             # So do not collect coverage for that
@@ -87,18 +87,8 @@ config = {
                 "oracle",
             ],
         },
-        "reducedDatabases": {
-            "phpVersions": [
-                DEFAULT_PHP_VERSION,
-            ],
-            "databases": [
-                "sqlite",
-                "mariadb:10.2",
-            ],
-        },
         "external-samba-windows": {
             "phpVersions": [
-                "7.3",
                 DEFAULT_PHP_VERSION,
             ],
             "databases": [
@@ -118,7 +108,6 @@ config = {
         },
         "external-other": {
             "phpVersions": [
-                "7.3",
                 DEFAULT_PHP_VERSION,
             ],
             "databases": [
@@ -532,7 +521,7 @@ def dependencies(ctx):
         return pipelines
 
     default = {
-        "phpVersions": ["7.3"],
+        "phpVersions": [DEFAULT_PHP_VERSION],
     }
 
     if "defaults" in config:
@@ -870,7 +859,7 @@ def phan(ctx):
         return pipelines
 
     default = {
-        "phpVersions": ["7.3", DEFAULT_PHP_VERSION],
+        "phpVersions": [DEFAULT_PHP_VERSION],
         "logLevel": "2",
     }
 
@@ -941,7 +930,7 @@ def litmus():
         return pipelines
 
     default = {
-        "phpVersions": ["7.3", DEFAULT_PHP_VERSION],
+        "phpVersions": [DEFAULT_PHP_VERSION],
         "logLevel": "2",
         "useHttps": True,
     }
@@ -1092,7 +1081,7 @@ def dav():
         return pipelines
 
     default = {
-        "phpVersions": ["7.3", DEFAULT_PHP_VERSION],
+        "phpVersions": [DEFAULT_PHP_VERSION],
         "logLevel": "2",
     }
 
@@ -1282,7 +1271,7 @@ def phpTests(ctx, testType, withCoverage):
     # The default PHP unit test settings for a PR.
     # Note: do not run Oracle by default in PRs.
     prDefault = {
-        "phpVersions": ["7.3", DEFAULT_PHP_VERSION],
+        "phpVersions": [DEFAULT_PHP_VERSION],
         "databases": [
             "sqlite",
             "mariadb:10.2",
@@ -1312,7 +1301,7 @@ def phpTests(ctx, testType, withCoverage):
 
     # The default PHP unit test settings for the cron job (usually runs nightly).
     cronDefault = {
-        "phpVersions": ["7.3", DEFAULT_PHP_VERSION],
+        "phpVersions": [DEFAULT_PHP_VERSION],
         "databases": [
             "sqlite",
             "mariadb:10.2",
