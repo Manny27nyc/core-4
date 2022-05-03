@@ -476,3 +476,19 @@ Feature: dav-versions
       | header              | value                                                                |
       | Content-Disposition | attachment; filename*=UTF-8''textfile0.txt; filename="textfile0.txt" |
     And the downloaded content should be "uploaded content"
+
+  Scenario: User can retrieve meta information of a file
+    Given user "Alice" has uploaded file with content "123" to "/davtest.txt"
+    When user "Alice" retrieves the meta information of file "/davtest.txt" using the meta API
+    Then the HTTP status code should be "207"
+    And the single response should contain a property "oc:meta-path-for-user" with value '/davtest.txt'
+
+  Scenario: User cannot retrieve meta information of a file
+    Given user "Alice" has uploaded file with content "123" to "/davtest.txt"
+    When user "Brian" retrieves the meta information of file "/davtest.txt" using the meta API
+    Then the HTTP status code should be "401"
+
+  Scenario: User cannot retrieve meta folder of a file which does not exist
+    Given user "Alice" has uploaded file with content "123" to "/davtest.txt"
+    When user "Alice" retrieves the meta information of fileId "MTI4NGQyMzgtYWE5Mi00MmNlLWJkYzQtMGIwMDAwMDA5MTU3PThjY2QyNzUxLTkwYTQtNDBmMi1iOWYzLTYxZWRmODQ0MjFmNA== " using the meta API
+    Then the HTTP status code should be "400" or "404"
