@@ -1161,10 +1161,6 @@ def dav():
                                      "name": "dav-test",
                                      "image": OC_CI_PHP % phpVersion,
                                      "commands": [
-                                         "apt install python2",
-                                         "python2 --version",
-                                         "python3 --version",
-                                         "python --version",
                                          "bash %s/script.sh" % scriptPath,
                                      ],
                                  },
